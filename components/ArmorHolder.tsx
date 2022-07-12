@@ -14,8 +14,8 @@ export default function ArmorHolder({updaterFunction}) {
     // tried to pass updaterFunction to itemFrame with context, didn't work
     return (
         <div className="armorHolder">
-            <ItemFrame itemList = {headArmor} updaterFunction = {updaterFunction}/>
-            <ItemFrame itemList = {armsArmor} updaterFunction = {updaterFunction}/>
+            <ItemFrame itemList = {headArmor} />
+            <ItemFrame itemList = {armsArmor} />
             {/*
              <ItemFrame itemList = {armsArmor} updaterFunction = {updaterFunction}/>
             <ItemFrame itemList = {chestArmor} updaterFunction = {updaterFunction}/>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import ItemFrame from "./ItemFrame.js"
-import PowerHolder from './PowerHolder.js'
 import StatHolder from './StatHolder.js'
 import CurrenciesHolder from './CurrenciesHolder.js'
 import SubClassHolder from './SubClassHolder.js'
@@ -24,8 +23,8 @@ const Base = () => {
   })
 
 
-  function updateEquippedItem(itemId, itemLight, itemSlot) {
-    let newEquippedItems = {[itemSlot]: { id: itemId, light_level: itemLight } }
+  const updateEquippedItem = (itemId:number, itemLight:number, itemSlot:string) => {
+    let newEquippedItems = {...equippedItems,[itemSlot]: { id: itemId, light_level: itemLight } }
     //console.log("id: " + itemId + " light"+ itemLight + " " + itemSlot)
     setEquippedItems(newEquippedItems)
     //console.log(equippedItems)
@@ -58,12 +57,14 @@ const Base = () => {
 
         <div className="statsBar">
           <CurrenciesHolder></CurrenciesHolder>
+
           <div className="lightContainer">
             <h1>Light Level</h1>
-            <h1>{parseInt(sumLight/9)}</h1>
+            <h1>{sumLight/9}</h1>
           </div>
+
           <StatHolder />
-          <baseContext.Provider value = {{equippedItems,setEquippedItems}}>
+          <baseContext.Provider value = {{updateEquippedItem}}>
             <ArmorHolder updaterFunction={updateEquippedItem}/>
           </baseContext.Provider>
           

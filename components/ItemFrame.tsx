@@ -4,9 +4,9 @@ import { ItemGrid } from './ItemGrid'
 import { baseContext } from './Base'
 
 
-export default function ItemFrame({ itemList,updaterFunction }) {
+export default function ItemFrame({ itemList }) {
   // the first item in the list is the currently equipped item
-  const {equippedItems, setEquippedItems} = useContext(baseContext)
+  const updaterFunction = useContext(baseContext)
   const [equippedItem,setEquippedItem] = useState(itemList[0])
   let handleHover = true;
 
@@ -36,8 +36,6 @@ export default function ItemFrame({ itemList,updaterFunction }) {
 
   useEffect( () => {
     updaterFunction(equippedItem.id,equippedItem.light_level,equippedItem.armor_slot)
-    const newEquippedItems = {...equippedItems, [equippedItem.armor_slot]:{"id": equippedItem.id, "light_level": equippedItem.light_level}}
-    setEquippedItems(newEquippedItems)
   },[equippedItem])
   return (
 
