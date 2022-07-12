@@ -1,3 +1,8 @@
+# Introduction
+Disclaimer:  I have no association with bungie and no rights to the franchise. This project is only an area for me to polish my skills in the theme of a Game that I like to play and to display on my portfolio. I have no intention of profitting from this project. This project also has no integration with the official game and is just a mockup of one aspect of gameplay.
+
+I created this project to practice my react skills and because I am a fan of Destiny. This project aims to recreate the inventory section of the game. Allowing someone to equip items in their inventory and see how the character's stats change as a result
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
