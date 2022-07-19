@@ -6,7 +6,7 @@ import SubClassHolder from './SubClassHolder.js'
 import ArmorHolder from './ArmorHolder.js'
 import WeaponHolder from './WeaponHolder.js'
 
-export const baseContext = React.createContext(0);
+export const baseContext = React.createContext((id:number, light:number,slot:string):void => {});
 
 const Base = () => {
   const [sumLight, setSumLight] = useState(0);
@@ -31,7 +31,7 @@ const Base = () => {
   }
 
 
-  function updateLightLevel() {
+  function updateLightLevel():void {
     Object.keys(equippedItems).forEach(key => {
       setSumLight(prevSum => prevSum += equippedItems[key]["light_level"])
     })
@@ -64,7 +64,7 @@ const Base = () => {
           </div>
 
           <StatHolder />
-          <baseContext.Provider value = {{updateEquippedItem}}>
+          <baseContext.Provider value = {updateEquippedItem}>
             <ArmorHolder updaterFunction={updateEquippedItem}/>
           </baseContext.Provider>
           

@@ -23,6 +23,7 @@ export default function StatHolder(stats) {
   return (
     <div className="statsCont">
       <div className="stat">
+        <>{console.log("aa")}</>
         <p>mobility</p>
         <img className="statLogo" alt="mobility logo" src={mobPng}></img>
         <h2>{charStats.mobility}</h2>
