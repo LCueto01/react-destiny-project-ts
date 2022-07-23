@@ -20,7 +20,6 @@ const Base = () => {
   };
   return (
     <div className="Page">
-      <p>Hello</p>
       <div className="topBanner"></div>
 
       <div className="characterScreen">

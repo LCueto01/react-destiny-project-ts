@@ -27,6 +27,13 @@ export default function ItemFrame({ itemList }:Props) {
       setHovering(false);
     }
   }
+  function setBoxHover() {
+    setHoveringBox(true);
+  }
+
+  function setBoxLeave() {
+    setHoveringBox(false);
+  }
 
   const getRarity = (i:weapon | armor) => {
     switch (i.rarity) {
@@ -79,16 +86,18 @@ export default function ItemFrame({ itemList }:Props) {
         <div
           data-testid="itemFrame"
           onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
           style={frameStyle}
         >
           <h2 className="itemWriting">{equippedItem.name}</h2>
           <h2 className="itemWriting">{equippedItem.light_level}</h2>
        
         </div>
-        {isHovering && (
+        {(isHovering || isHoveringBox) && (
           <div
             data-testid="itemGrid"
-            onMouseLeave={handleMouseLeave}
+            onMouseLeave={setBoxLeave}
+            onMouseEnter={setBoxHover}
             className="gridStyle"
           >
             {renderItems}
