@@ -1,7 +1,7 @@
 import React from 'react';
-import shardsImg from "./images/shards.png"
-import engramPng from "./images/engram.jpg"
-import engramSelectPng from "./images/selectedengram.jpg"
+import shardsImg from "../images/shards.png"
+import engramPng from "../images/engram.jpg"
+import engramSelectPng from "../images/selectedengram.jpg"
 
 
 export default function CurrenciesHolder() {

@@ -1,3 +1,10 @@
-const { removeModuleScopePlugin } = require('customize-cra')
+const { removeModuleScopePlugin } = require('customize-cra');
 
-module.exports = removeModuleScopePlugin()
+module.exports = function override(config, env) {
+    if (!config.plugins) {
+        config.plugins = [];
+    }
+    removeModuleScopePlugin()(config);
+
+    return config;
+};
