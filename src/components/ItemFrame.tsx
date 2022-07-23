@@ -58,6 +58,7 @@ export default function ItemFrame({ itemList }:Props) {
     marginBottom: "30px",
     marginLeft: "5px",
     backgroundColor: itemRarity,
+    
   };
 
   const gridStyle = {

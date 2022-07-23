@@ -2,6 +2,8 @@ import { ExoticComponent } from "react"
 
 
 export type rarity = "uncommon"|"rare" | "legendary"| "exotic"
+
+export type itemType = "weapon" | "armor"
 interface wearableitem {
     id: number,
     light_level: number,

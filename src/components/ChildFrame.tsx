@@ -1,5 +1,6 @@
 import React,{useContext} from 'react'
 import { equipContext,equipContextType } from './ArmorHolder'
+import { weaponsContext,weaponsContextType } from './WeaponHolder'
 import { weapon,armor } from './Interfaces'
 
 
@@ -11,6 +12,8 @@ type Props = {
 export const ChildFrame = ({item, renderRarity}:Props) => {
   
   const equipNewItem = useContext(equipContext) as equipContextType
+  const equipNewWeapon = useContext(weaponsContext) as weaponsContextType
+  
   const itemRarity = renderRarity(item)
  
   const frameStyle = {

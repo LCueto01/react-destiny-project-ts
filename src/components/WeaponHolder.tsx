@@ -1,110 +1,59 @@
-import React from 'react'
+import React,{useState} from 'react'
 import SubClassHolder from './SubClassHolder'
 import { weapon } from './Interfaces'
 import ItemFrame from './ItemFrame'
 
-const primaryWeapons: Array<weapon> = [
-  {
-    "id": 51,
-    "light_level": 1600,
-    "name": "systemic",
-    "description": "Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus.",
-    "slot": "primary",
-    "weapon_type": "shotgun",
-    "rarity": "rare",
-    "impact": 48,
-    "range": 42,
-    "reload": 25,
-    "stability": 57,
-    "rpm": 686,
-    "magazine_size": 26
-  },
-  {
-    "id": 52,
-    "light_level": 1542,
-    "name": "Universal",
-    "description": "Proin at turpis a pede posuere nonummy. Integer non velit.",
-    "slot": "primary",
-    "weapon_type": "pulse_rifle",
-    "rarity": "rare",
-    "impact": 16,
-    "range": 80,
-    "reload": 47,
-    "stability": 29,
-    "rpm": 648,
-    "magazine_size": 22
-  }]
 
-const secondary:Array<weapon> = [{
-  "id": 54,
-  "light_level": 1469,
-  "name": "monitoring",
-  "description": "Aenean sit amet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus.",
-  "slot": "secondary",
-  "weapon_type": "pulse_rifle",
-  "rarity": "exotic",
-  "impact": 30,
-  "range": 85,
-  "reload": 86,
-  "stability": 90,
-  "rpm": 354,
-  "magazine_size": 62
-},
-{
-  "id": 56,
-  "light_level": 1537,
-  "name": "standardization",
-  "description": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa.",
-  "slot": "secondary",
-  "weapon_type": "rocket",
-  "rarity": "exotic",
-  "impact": 30,
-  "range": 100,
-  "reload": 36,
-  "stability": 92,
-  "rpm": 360,
-  "magazine_size": 77
-}]
+import { primaryWeaponsData,secondaryWeaponsData, heavyWeaponsData } from './data'
 
-const heavy:Array<weapon> = [{
-  "id": 55,
-  "light_level": 1487,
-  "name": "Function-based",
-  "description": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst.",
-  "slot": "heavy",
-  "weapon_type": "fusion_rifle",
-  "rarity": "uncommon",
-  "impact": 69,
-  "range": 84,
-  "reload": 38,
-  "stability": 24,
-  "rpm": 490,
-  "magazine_size": 95
-},
-{
-  "id": 61,
-  "light_level": 1554,
-  "name": "tangible",
-  "description": "Nulla tellus. In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt.",
-  "slot": "heavy",
-  "weapon_type": "auto_rifle",
-  "rarity": "legendary",
-  "impact": 86,
-  "range": 94,
-  "reload": 68,
-  "stability": 94,
-  "rpm": 398,
-  "magazine_size": 24
-}]
+export type weaponsContextType = (item: weapon) => void
+export const weaponsContext = React.createContext<weaponsContextType | null>(null)
 
+type Props = {
+  lightSetter:(num:number)=> void
+}
+export default function WeaponHolder({lightSetter}) {
+  const [equippedItems, setEquippedItems] = useState({
+    head: 0,
+    arms: 0,
+    chest: 0,
+    legs: 0,
+    boots: 0,
+    class_item: 0,
+})
+  const [primaries,setPrimaries] = useState(primaryWeaponsData)
+  const [secondaries,setSecondaries] = useState(secondaryWeaponsData)
+  const [heavies,setHeavies] = useState(heavyWeaponsData)
 
-export default function WeaponHolder() {
+  const equipNewItem = (item: weapon):void => {
+    console.log(item)
+    //replaces item and updates ids
+
+    const replaceWeapon = (foundItem:weapon, itemSource: Array<weapon>)=>{
+        const copy = JSON.parse(JSON.stringify(itemSource))
+        // it only worked if I did this for some reason??
+        const matchingItem = copy.find(i => {return i.id === foundItem.id})
+        const foundIndex = copy.indexOf(matchingItem!)
+        copy[foundIndex] = copy[0]
+        copy[0] = foundItem
+       
+        const copyArmorIds = {...equippedItems}
+        //copyArmorIds[foundItem.armor_slot] = foundItem.id
+        console.log(copyArmorIds)
+    
+        return copy 
+    }
+   
+
+   
+    
+}
   return (
     <div className="weaponHolder">
       <SubClassHolder />
-      <ItemFrame itemList = {primaryWeapons}/>
-      <ItemFrame itemList = {secondary}/>
-      <ItemFrame itemList = {heavy}/>
+      <ItemFrame itemList = {primaries}/>
+      <ItemFrame itemList = {secondaries}/>
+      <ItemFrame itemList = {heavies}/>
     </div>
   )
 }

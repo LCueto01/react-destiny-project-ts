@@ -23,7 +23,7 @@ const Base = () => {
       <div className="topBanner"></div>
 
       <div className="characterScreen">
-        {/*WeaponHolder*/}
+        <WeaponHolder lightSetter = {setWeaponLight}/>
         <div className="backgroundCharacter"></div>
 
         <div className="statsBar">
