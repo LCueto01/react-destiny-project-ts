@@ -39,10 +39,20 @@ jobs:
       runs-on: ubuntu-latest
   
       steps:
-        
-        - name: using action I made
+        - name: using action from tutorial
           id: asdf
           uses: kubowania/my-javascript-action@v1
           with:
            who-to-greet: "Lorenzo"
+           
+  testing-action-i-made:
+      runs-on: ubuntu-latest
+      
+      steps:
+        - name: using action I made
+          id: asdf
+          uses: Lcueto01/action-test@v1
+          with:
+            who-to-greet: "Lorenzo 2"
+          
         
