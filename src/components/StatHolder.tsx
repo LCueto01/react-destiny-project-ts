@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-
 import { armor } from "./Interfaces";
 
 type Props = {
-  armorList:Array<armor>
-}
+  armorList: Array<armor>;
+};
 // This has been moved to Base, keeping this component for now....
-export default function StatHolder( {armorList}:Props ) {
+export default function StatHolder({ armorList }: Props) {
   const [charStats, setCharStats] = useState({
     mobility: 0,
     resilience: 0,
@@ -27,7 +26,7 @@ export default function StatHolder( {armorList}:Props ) {
       intellect: 0,
       strength: 0,
     };
-    armorList.forEach((element:armor) => {
+    armorList.forEach((element: armor) => {
       const {
         mobility,
         resilience,
@@ -58,7 +57,7 @@ export default function StatHolder( {armorList}:Props ) {
         <img
           className="statLogo"
           alt="mobility logo"
-          //src={require("../images/mob.png")}
+          src={require("../images/mob.png")}
         ></img>
         <h2>{Math.floor(charStats.mobility / 6)}</h2>
       </div>
@@ -68,7 +67,7 @@ export default function StatHolder( {armorList}:Props ) {
         <img
           className="statLogo"
           alt="resilience logo"
-          //src={require("../images/res.png")}
+          src={require("../images/res.png")}
         ></img>
         <h2>{Math.floor(charStats.resilience / 6)}</h2>
       </div>
@@ -78,7 +77,7 @@ export default function StatHolder( {armorList}:Props ) {
         <img
           className="statLogo"
           alt="recovery logo"
-          //src={require("../images/rec.png")}
+          src={require("../images/rec.png")}
         ></img>
         <h2>{Math.floor(charStats.recovery / 6)}</h2>
       </div>
@@ -88,7 +87,7 @@ export default function StatHolder( {armorList}:Props ) {
         <img
           className="statLogo"
           alt="recovery logo"
-          //src={require("../images/disc.png")}
+          src={require("../images/disc.png")}
         ></img>
         <h2>{Math.floor(charStats.discipline / 6)}</h2>
       </div>
@@ -98,7 +97,7 @@ export default function StatHolder( {armorList}:Props ) {
         <img
           className="statLogo"
           alt="recovery logo"
-          //src={require("../images/int.png")}
+          src={require("../images/int.png")}
         ></img>
         <h2>{Math.floor(charStats.intellect / 6)}</h2>
       </div>
@@ -108,7 +107,7 @@ export default function StatHolder( {armorList}:Props ) {
         <img
           className="statLogo"
           alt="recovery logo"
-          //src={require("../images/strength.png")}
+          src={require("../images/strength.png")}
         ></img>
         <h2>{Math.floor(charStats.strength / 6)}</h2>
       </div>
